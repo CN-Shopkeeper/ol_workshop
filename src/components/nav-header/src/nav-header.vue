@@ -4,4 +4,9 @@
 
 <script setup lang="ts"></script>
 
-<style scoped></style>
+<style scoped lang="less">
+.nav-header {
+  display: flex;
+  width: 100%;
+}
+</style>
