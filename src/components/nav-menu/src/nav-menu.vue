@@ -6,10 +6,22 @@
         <span v-if="!collapse">OpenLayers Workshop</span>
       </div>
     </div>
+    <el-menu router :default-active="router.currentRoute.value.path">
+      <template v-for="item in menuItems" :key="item.id">
+        <el-menu-item :index="item.id" :popper-class="item.popperClass">{{
+          item.name
+        }}</el-menu-item>
+      </template>
+    </el-menu>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter } from "vue-router";
+import { menuItems } from "../config/menu-item.config";
+
+const router = useRouter();
+</script>
 
 <style scoped lang="less">
 .nav-menu {
