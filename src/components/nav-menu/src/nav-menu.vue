@@ -6,11 +6,33 @@
         <span v-if="!collapse">OpenLayers Workshop</span>
       </div>
     </div>
-    <el-menu router :default-active="router.currentRoute.value.path">
+    <el-menu
+      router
+      :default-active="router.currentRoute.value.path"
+      class="el-menu-vertical"
+      background-color="#2f4f4f"
+      :collapse="collapse"
+      text-color="#b7bdc3"
+      active-text-color="#fff"
+    >
       <template v-for="item in menuItems" :key="item.id">
-        <el-menu-item :index="item.id" :popper-class="item.popperClass">{{
-          item.name
-        }}</el-menu-item>
+        <template v-if="item.children">
+          <el-sub-menu :index="item.id">
+            <template #title>
+              {{ item.name }}
+            </template>
+            <template v-for="subItem in item.children" :key="subItem.id">
+              <el-menu-item :index="subItem.id">
+                {{ subItem.name }}
+              </el-menu-item>
+            </template>
+          </el-sub-menu>
+        </template>
+        <template v-else>
+          <el-menu-item :index="item.id">
+            {{ item.name }}
+          </el-menu-item>
+        </template>
       </template>
     </el-menu>
   </div>
@@ -26,7 +48,7 @@ const router = useRouter();
 <style scoped lang="less">
 .nav-menu {
   height: 100%;
-  background-color: #1f6b75;
+  background-color: #2f4f4f;
 
   .logo {
     display: flex;
@@ -52,18 +74,9 @@ const router = useRouter();
     border-right: none;
   }
 
-  // 目录
-  .el-sub-menu {
-    background-color: #001529 !important;
-    // 二级菜单 ( 默认背景 )
-    .el-menu-item {
-      padding-left: 50px !important;
-      background-color: #0c2135 !important;
-    }
-  }
-
-  ::v-deep .el-sub-menu__title {
-    background-color: #001529 !important;
+  .el-menu-item {
+    padding-left: 50px !important;
+    background-color: #1f6b75 !important;
   }
 
   // hover 高亮
@@ -72,8 +85,7 @@ const router = useRouter();
   }
 
   .el-menu-item.is-active {
-    color: #fff !important;
-    background-color: #0a60bd !important;
+    background-color: #5f9ea0 !important;
   }
 }
 

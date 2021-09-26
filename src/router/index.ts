@@ -15,10 +15,66 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "overview" */ "@/views/overview/overview.vue")
   },
   {
-    path: "/basic",
-    name: "basic",
+    path: "/maps",
+    name: "maps",
     component: () =>
-      import(/* webpackChunkName: "basic" */ "@/views/basic/basic.vue")
+      import(/* webpackChunkName: "maps" */ "@/views/maps/maps.vue"),
+    children: [
+      {
+        path: "/maps/basic",
+        name: "basic",
+        component: () =>
+          import(/* webpackChunkName: "basic" */ "@/views/maps/basic/basic.vue")
+      },
+      {
+        path: "/maps/vector-data",
+        name: "vectorData",
+        component: () =>
+          import(
+            /* webpackChunkName: "vectorData" */ "@/views/maps/vector-data/vector-data.vue"
+          )
+      },
+      {
+        path: "/maps/mobile-maps-and-sensors",
+        name: "mobileMapsAndSensors",
+        component: () =>
+          import(
+            /* webpackChunkName: "mobileMapsAndSensors" */ "@/views/maps/mobile-maps-and-sensors/mobile-maps-and-sensors.vue"
+          )
+      },
+      {
+        path: "/maps/geo-tiff-rendering",
+        name: "geoTIFFRendering",
+        component: () =>
+          import(
+            /* webpackChunkName: "geoTIFFRendering" */ "@/views/maps/geo-tiff-rendering/geo-tiff-rendering.vue"
+          )
+      },
+      {
+        path: "/maps/vector-tiles-and-mapbox-styles",
+        name: "vectorTilesAndMapboxStyles",
+        component: () =>
+          import(
+            /* webpackChunkName: "vectorTilesAndMapboxStyles" */ "@/views/maps/vector-tiles-and-mapbox-styles/vector-tiles-and-mapbox-styles.vue"
+          )
+      },
+      {
+        path: "/maps/webgl-point-rendering",
+        name: "webGLPointRendering",
+        component: () =>
+          import(
+            /* webpackChunkName: "webGLPointRendering" */ "@/views/maps/webgl-point-rendering/webgl-point-rendering.vue"
+          )
+      },
+      {
+        path: "/maps/data-tiles",
+        name: "dataTiles",
+        component: () =>
+          import(
+            /* webpackChunkName: "dataTiles" */ "@/views/maps/data-tiles/data-tiles.vue"
+          )
+      }
+    ]
   }
 ];
 
