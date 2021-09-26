@@ -3,7 +3,7 @@
     <div class="logo">
       <img class="img" src="~@/assets/logo70.png" alt="logo" />
       <div class="title">
-        <span v-if="!collapse">OpenLayers Workshop</span>
+        <span v-if="!store.state.isMenuFold">OpenLayers Workshop</span>
       </div>
     </div>
     <el-menu
@@ -11,7 +11,7 @@
       :default-active="router.currentRoute.value.path"
       class="el-menu-vertical"
       background-color="#2f4f4f"
-      :collapse="collapse"
+      :collapse="store.state.isMenuFold"
       text-color="#b7bdc3"
       active-text-color="#fff"
     >
@@ -19,7 +19,8 @@
         <template v-if="item.children">
           <el-sub-menu :index="item.id">
             <template #title>
-              {{ item.name }}
+              <i v-if="item.icon" :class="item.icon"></i>
+              <span>{{ item.name }}</span>
             </template>
             <template v-for="subItem in item.children" :key="subItem.id">
               <el-menu-item :index="subItem.id">
@@ -28,11 +29,6 @@
             </template>
           </el-sub-menu>
         </template>
-        <template v-else>
-          <el-menu-item :index="item.id">
-            {{ item.name }}
-          </el-menu-item>
-        </template>
       </template>
     </el-menu>
   </div>
@@ -40,9 +36,13 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
+import { useStore } from "@/store";
 import { menuItems } from "../config/menu-item.config";
 
+// 配置el-menu的路由
 const router = useRouter();
+// 折叠菜单
+const store = useStore();
 </script>
 
 <style scoped lang="less">

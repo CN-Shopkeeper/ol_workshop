@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <el-container class="main-content">
-      <el-aside width="270px">
+      <el-aside :width="store.state.isMenuFold ? '60px' : '270px'">
         <nav-menu />
       </el-aside>
       <el-container class="page">
@@ -19,8 +19,12 @@
 </template>
 
 <script setup lang="ts">
+import { useStore } from "@/store";
 import NavMenu from "@/components/nav-menu";
 import NavHeader from "@/components/nav-header";
+
+// 折叠菜单
+const store = useStore();
 </script>
 
 <style scoped lang="less">

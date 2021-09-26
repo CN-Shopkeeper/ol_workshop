@@ -4,6 +4,7 @@ export const menuItems: IMenuItem[] = [
   {
     id: "/overview",
     name: "overview",
+    icon: "el-icon-data-board",
     children: [
       {
         id: "/overview",
@@ -14,6 +15,7 @@ export const menuItems: IMenuItem[] = [
   {
     id: "/maps",
     name: "maps",
+    icon: "el-icon-location-information",
     children: [
       {
         id: "/maps/basic",

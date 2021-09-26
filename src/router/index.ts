@@ -83,4 +83,10 @@ const router = createRouter({
   routes
 });
 
+router.beforeEach((to) => {
+  if (to.path === "/maps" || to.path === "/maps/") {
+    return "/maps/basic";
+  }
+});
+
 export default router;
