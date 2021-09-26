@@ -24,7 +24,7 @@
             </template>
             <template v-for="subItem in item.children" :key="subItem.id">
               <el-menu-item :index="subItem.id">
-                {{ subItem.name }}
+                <span>{{ subItem.name }}</span>
               </el-menu-item>
             </template>
           </el-sub-menu>
