@@ -1,7 +1,15 @@
 <template>
-  <div>vector-data</div>
+  <div class="vector-data">
+    <vector-data-map></vector-data-map>
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { VectorDataMap } from "@/components/page-maps";
+</script>
 
-<style scoped></style>
+<style scoped>
+.vector-data {
+  height: 100%;
+}
+</style>

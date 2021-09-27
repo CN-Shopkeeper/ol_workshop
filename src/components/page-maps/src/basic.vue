@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch, ref } from "vue";
+import { onMounted, ref } from "vue";
 import OSM from "ol/source/OSM";
 import TileLayer from "ol/layer/Tile";
 import { Map, View } from "ol";
@@ -32,22 +32,20 @@ import {
   getCountryLocations
 } from "../utils/convert-data";
 
-let map: Map;
+const map: Map = new Map({
+  layers: [
+    new TileLayer({
+      source: new OSM()
+    })
+  ],
+  view: new View({
+    center: fromLonLat([114.31667, 30.51667]),
+    zoom: 4
+  })
+});
 
 onMounted(() => {
-  map = new Map({
-    target: "map-container",
-    layers: [
-      new TileLayer({
-        source: new OSM()
-      })
-    ],
-    view: new View({
-      center: fromLonLat([114.31667, 30.51667]),
-      zoom: 4
-    })
-  });
-
+  map.setTarget("map-container");
   resizeMap(map);
 });
 
