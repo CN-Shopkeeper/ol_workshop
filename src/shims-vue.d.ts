@@ -4,3 +4,7 @@ declare module "*.vue" {
   const component: DefineComponent<{}, {}, any>;
   export default component;
 }
+
+
+// 声明.json文件
+declare module "*.json";
