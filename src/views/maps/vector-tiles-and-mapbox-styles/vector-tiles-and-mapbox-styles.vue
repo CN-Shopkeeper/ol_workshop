@@ -1,7 +1,7 @@
-<template>
-  <div>vector-tiles-and-mapbox-styles</div>
-</template>
+<template><map-style-map></map-style-map></template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { MapStyleMap } from "@/components/page-maps";
+</script>
 
 <style scoped></style>
